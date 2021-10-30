@@ -215,6 +215,8 @@ We hope you enjoy.
 
 Version History:
 
+v1.5: -all instances for crossmod with Lava's Khalid for BGII mod considered.
+
 v1.4: Unified version for classic BGII and EE, by Austin and jastey:
 	-Moved tp2 into mod folder.
 	-Added turnabout.ini with mod metadata , install order syntax, and globally unique LABELs to support Project Infininty.
