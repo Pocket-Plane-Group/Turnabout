@@ -1,0 +1,14 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("D0T#RezzedKhal","GLOBAL",1)
+		Wait(2)
+		ActionOverride("D0T#Khal",ForceSpell(Player1,SAREVOK_SOULSTEAL))
+		Wait(5)
+		CreateVisualEffectObject("SPNWCHRM","D0T#Khal")
+		Wait(2)
+		ActionOverride("FINSOL01",StartDialogueNoSet(Player1))
+		EndCutSceneMode()
+END

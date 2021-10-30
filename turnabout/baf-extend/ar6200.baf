@@ -1,0 +1,389 @@
+
+IF
+Global("D0T#AnybodyPromised","GLOBAL",0)
+OR(5)
+Global("BodhiPromised","GLOBAL",1)
+Global("T#DynaPromised","GLOBAL",1)
+Global("T#TiaxPromised","GLOBAL",1)
+Global("T#KhalPromised","GLOBAL",1)
+Global("T#XzarPromised","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("D0T#AnybodyPromised","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedXzar","GLOBAL",1)
+    Global("D0T#XzarBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#XzarBio","GLOBAL",1)
+        TextScreen("D0T#XZAR")
+        SetGlobal("D0T#XzarBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#XzarBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#XzarBio","GLOBAL",1)
+END
+
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedDyna","GLOBAL",1)
+    Global("D0T#DynaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#DynaBio","GLOBAL",1)
+        TextScreen("D0T#DYNA")
+        SetGlobal("D0T#DynaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#DynaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#DynaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedTiax","GLOBAL",1)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    Global("D0T#TiaxBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+        TextScreen("D0T#Tia1")
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedTiax","GLOBAL",1)
+    !Global("PlayerChoseEssence","GLOBAL",1)
+    Global("D0T#TiaxBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+        TextScreen("D0T#Tia2")
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#TiaxBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedKhal","GLOBAL",1)
+    !InParty("Jaheira")
+    Global("D0T#KhalBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+        TextScreen("D0T#Kha1")
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedKhal","GLOBAL",1)
+    InParty("Jaheira")
+    Global("D0T#KhalBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+        TextScreen("D0T#Kha2")
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#KhalBio","GLOBAL",1)
+END
+
+IF
+	Global("StartEndBios","AR6200",1)
+	InParty("Jaheira")
+        Global("D0T#RezzedKhal","GLOBAL",1)
+	Global("JaheiraBio","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JaheiraBio","GLOBAL",1)
+		TextScreen("D0T#JAHE")
+		SetGlobal("JaheiraBio","GLOBAL",1)
+		SmallWait(1)
+		SetGlobal("JaheiraBio","GLOBAL",1)
+		Continue()
+		SetGlobal("JaheiraBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedYosh","GLOBAL",1)
+    Global("D0T#YoshBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#YoshBio","GLOBAL",1)
+        TextScreen("D0T#Yosh")
+        SetGlobal("D0T#YoshBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#YoshBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#YoshBio","GLOBAL",1)
+END
+
+// Alianna 1
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    GlobalLT("PPEvilChoices","GLOBAL",3)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    OR(2)
+    Race(Player1,GNOME)
+    Race(Player1,DWARF)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlD1")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    GlobalLT("PPEvilChoices","GLOBAL",3)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    OR(4)
+    Race(Player1,HUMAN)
+    Race(Player1,ELF)
+    Race(Player1,HALF_ELF)
+    Race(Player1,HALFLING)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlH1")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    GlobalLT("PPEvilChoices","GLOBAL",3)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    Race(Player1,HALFORC)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlO1")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+
+// Alianna 2
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    GlobalGT("PPEvilChoices","GLOBAL",2)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    OR(2)
+    Race(Player1,GNOME)
+    Race(Player1,DWARF)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlD2")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    GlobalGT("PPEvilChoices","GLOBAL",2)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    OR(4)
+    Race(Player1,HUMAN)
+    Race(Player1,ELF)
+    Race(Player1,HALF_ELF)
+    Race(Player1,HALFLING)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlH2")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    GlobalGT("PPEvilChoices","GLOBAL",2)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    Race(Player1,HALFORC)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlO2")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+// Alianna 3
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    !Global("AerieRomanceActive","GLOBAL",2)
+    !Global("PlayerChoseEssence","GLOBAL",1)
+    OR(2)
+    Race(Player1,GNOME)
+    Race(Player1,DWARF)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlD3")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    !Global("AerieRomanceActive","GLOBAL",2)
+    !Global("PlayerChoseEssence","GLOBAL",1)
+    OR(4)
+    Race(Player1,HUMAN)
+    Race(Player1,ELF)
+    Race(Player1,HALF_ELF)
+    Race(Player1,HALFLING)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlH3")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    !Global("AerieRomanceActive","GLOBAL",2)
+    !Global("PlayerChoseEssence","GLOBAL",1)
+    Race(Player1,HALFORC)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlO3")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+// Alianna 4
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    Global("AerieRomanceActive","GLOBAL",2)
+    !Global("PlayerChoseEssence","GLOBAL",1)
+    OR(2)
+    Race(Player1,GNOME)
+    Race(Player1,DWARF)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlD4")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    Global("AerieRomanceActive","GLOBAL",2)
+    !Global("PlayerChoseEssence","GLOBAL",1)
+    OR(4)
+    Race(Player1,HUMAN)
+    Race(Player1,ELF)
+    Race(Player1,HALF_ELF)
+    Race(Player1,HALFLING)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlH4")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    Global("D0T#RezzedAlia","GLOBAL",1)
+    Global("AerieRomanceActive","GLOBAL",2)
+    !Global("PlayerChoseEssence","GLOBAL",1)
+    Race(Player1,HALFORC)
+    Global("D0T#AliaBio","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        TextScreen("D0T#AlO4")
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        SmallWait(1)
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+        Continue()
+        SetGlobal("D0T#AliaBio","GLOBAL",1)
+END
+

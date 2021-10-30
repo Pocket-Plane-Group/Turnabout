@@ -1,0 +1,8 @@
+IF
+	AreaCheck("AR1516")
+        Global("PGYoshimoDirtyHeart","GLOBAL",0)
+THEN
+RESPONSE #100
+        SetGlobal("PGYoshimoDirtyHeart","GLOBAL",1)
+END
+

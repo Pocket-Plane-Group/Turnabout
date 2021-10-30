@@ -1,0 +1,17 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(1)
+		CreateVisualEffectObject("SPPOWWRD","D0T#Dyna")
+		ActionOverride("D0T#Dyna",Enemy())
+		ActionOverride("D0T#Dyna",FaceObject(Player1))
+		// ActionOverride("D0T#Dyna",PlaySound("BODHIX41"))
+		Wait(1)
+		ForceSpellRES("SPWI055","D0T#Dyna")
+		Wait(7)
+		ActionOverride("finsol01",StartDialogueNoSet(Player1))
+		EndCutSceneMode()
+END
+
