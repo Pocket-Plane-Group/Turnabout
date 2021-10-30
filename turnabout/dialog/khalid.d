@@ -1,89 +1,89 @@
 BEGIN D0T#KHAL
 
 IF ~NumTimesTalkedTo(0)~ THEN BEGIN Khalid1
-SAY ~Wha--who--what am I doing here?!?~
+SAY @0
 IF ~~ GOTO notstart
 IF ~InParty("Jaheira") !G("JaheiraRomanceActive",2)~ GOTO nonstart
 IF ~InParty("Jaheira") G("JaheiraRomanceActive",2)~ GOTO romstart
 END
 
 IF ~~ notstart
-SAY ~<CHARNAME>, is that you? M-m-my, it seems like it has been s-so long.~
-= ~Y-you are looking well. But... what is this place? And why am I h-here?~
-++ ~Hello again, Khalid. This is the Throne of Bhaal, and I need your help to defeat a vicious, evil foe.~ + wheresjaheira
-++ ~You are here because I wish you here. You will fight at my side once more against a deadly enemy, because I say so.~ + wheresjaheira
-++ ~I wanted to apologize for not being able to do more to help you. Irenicus killed you to get at Imoen and me. I wish it had not involved you.~ + hadnotbeen
+SAY @1
+= @2
+++ @3 + wheresjaheira
+++ @4 + wheresjaheira
+++ @5 + hadnotbeen
 END
 
 IF ~~ hadnotbeen
-SAY ~Y-y-you could not have helped it, <CHARNAME>. There is nothing to be done now. A-and I protected Jaheira so that she might live.~
-= ~Where is Jaheira? Why is she not w-w-with you?~
-++ ~I really have no idea. Does it matter?~ + matter
-+ ~InParty("Jaheira") Dead("Jaheira")~ + ~She fell in recent fighting. We may be able to restore her later.~ + later
-+ ~!InParty("Jaheira") Dead("Jaheira")~ + ~She fell in fighting, some time ago. I am sorry, Khalid.~ + dead
-+ ~!Dead("Jaheira")~ + ~She is safe, back in the real world we knew.~ + safe
+SAY @6
+= @7
+++ @8 + matter
++ ~InParty("Jaheira") Dead("Jaheira")~ + @9 + later
++ ~!InParty("Jaheira") Dead("Jaheira")~ + @10 + dead
++ ~!Dead("Jaheira")~ + @11 + safe
 END
 
 IF ~~ wheresjaheira
-SAY ~Th-that is very interesting, <CHARNAME>, but where is Jaheira? Why is she not w-w-with you?~
-++ ~I really have no idea. Does it matter?~ + matter
-+ ~InParty("Jaheira") Dead("Jaheira")~ + ~She fell in recent fighting. We may be able to restore her later.~ + later
-+ ~!InParty("Jaheira") Dead("Jaheira")~ + ~She fell in fighting, some time ago. I am sorry, Khalid.~ + dead
-+ ~!Dead("Jaheira")~ + ~She is safe, back in the real world we knew.~ + safe
+SAY @12
+++ @8 + matter
++ ~InParty("Jaheira") Dead("Jaheira")~ + @9 + later
++ ~!InParty("Jaheira") Dead("Jaheira")~ + @10 + dead
++ ~!Dead("Jaheira")~ + @11 + safe
 END
 
 IF ~~ dead
-SAY ~Jaheira! Oh n-no, Jaheira...~
-= ~What... wh-what am I to do?~
-++ ~I am surprised you think it matters. The woman was a harpy.~ + matter
-++ ~Listen up, and listen good, because I am about to tell you.~ + just
-++ ~You can join me for one last fight, and win a great battle in her name.~ + just
+SAY @13
+= @14
+++ @15 + matter
+++ @16 + just
+++ @17 + just
 END
 
 IF ~~ safe
-SAY ~Oh, that's g-g-good, <CHARNAME>. I worry about her, y-you know.~
-++ ~I am surprised you think it matters. The woman is a harpy.~ + matter
-++ ~Listen up, and listen good, because I am about to tell you something very important.~ + just
-++ ~You can join me for one last fight, and win a great battle in her name.~ + just
+SAY @18
+++ @19 + matter
+++ @20 + just
+++ @17 + just
 END
 
 
 IF ~~ later
-SAY ~Jaheira! Oh n-no, Jaheira... something must be done! We must save her!~
-++ ~We can, but not if I am killed here. Will you join me and help me fight?~ + just
-++ ~That depends. What is it worth to you?~ + worth
+SAY @21
+++ @22 + just
+++ @23 + worth
 END
 
 IF ~~ worth
-SAY ~Worth? W-why, it is worth anything at all. A-anything.~
+SAY @24
 IF ~~ GOTO just
 END
 
 IF ~~ matter
-SAY ~I... <CHARNAME>, I am a-a-ashamed to see that you turned out to have such little r-regard for others. Of course it matters! It matters very much to me.~
-= ~B-b-but if you do not care for her, then I cannot not care for this situation y-you find yourself in. I would wish you luck, but I d-do not think I would mean it. Goodbye.~
+SAY @25
+= @26
 IF ~~ THEN DO ~ReallyForceSpell(Myself,FLASHY_DEATH_YEAH)~ EXIT
 END
 
 IF ~~ just
-SAY ~J-just explain to me again what we must do, and it... it shall be as though we were never parted!~
-++ ~Amelyssan means to destroy me and take the Throne of Bhaal for her own. I mean to stop her and ascend to it in her place.~ + herplace
-++ ~Amelyssan, a rogue priestess of Bhaal, has arranged the deaths of thousands and means to finish the job here and now. Help me defeat her and I can depart.~ + leavethis
-+ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + ~I mean to end Amelyssan's reign of terror, and then use the powers I will gain to grant you new life.~ + grant
+SAY @27
+++ @28 + herplace
+++ @29 + leavethis
++ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + @30 + grant
 END
 
 IF ~~ herplace
-SAY ~A-a-ascend? To the level of the gods? I-if you think that is wise. T-there is so much of what you have done that I do not know, after all.~
+SAY @31
 IF ~~ GOTO lead
 END
 
 IF ~~ leavethis
-SAY ~The s-s-sooner the better, I should say. I d-do not like the looks of this place at all. It is not safe for you.~
+SAY @32
 IF ~~ GOTO lead
 END
 
 IF ~~ lead
-SAY ~Lead the way, <CHARNAME>, a-and I will do my best to serve you again, for as long as I can!~
+SAY @33
 IF ~Difficulty(EASIEST)~ THEN DO ~SetGlobal("T#RaiseKhalid","GLOBAL",2)
 ApplySpellRES("d0t#dif1",Myself)
 Ally()~ EXIT
@@ -102,60 +102,60 @@ Ally()~ EXIT
 END
 
 IF ~~ grant
-SAY ~Y-you could do such a thing? I had never had cause to hope...~
+SAY @34
 IF ~~  DO ~SetGlobal("T#KhalPromised","GLOBAL",1)~ GOTO wonderful
 IF ~Dead("Jaheira") !InParty("Jaheira")~ GOTO jahdead
 END
 
 IF ~~ wonderful
-SAY ~And i-if Jaheira... if s-she would still know me... things could be so wonderful!~
-= ~Oh, thank you, thank you! I shall always look for a way to repay you!~
+SAY @35
+= @36
 IF ~~ GOTO lead
 END
 
 IF ~~ jahdead
-SAY ~But w-w-with Jaheira gone, what would there be for me in a n-new life?~
-++ ~Anything you wish it to be! You could travel, adventure, paint, sing... anything at all!~ + anything
-++ ~Are you kidding? The woman held you back, kept you down! You could finally live life to the fullest now!~ + never
-++ ~There could be another, Khalid. Me, for example.~ + me
+SAY @37
+++ @38 + anything
+++ @39 + never
+++ @40 + me
 END
 
 IF ~~ anything
-SAY ~I could do a-anything, except be with my w-w-wife again.~
-= ~Your offer is g-g-generous, but I must decline.~
+SAY @41
+= @42
 IF ~~ GOTO lead
 END
 
 IF ~~ me
-SAY ~Oh... oh, no, I could never th-think of such a thing, <CHARNAME>. Your offer is g-g-generous, but I must decline.~
+SAY @43
 IF ~~ GOTO lead
 END
 
 IF ~~ never
-SAY ~I-I cannot believe you would s-s-say such a thing! I l-love Jaheira and she loved me! I will not listen to this, a-a-and I will not reward you for being so rude!~
-= ~I am v-very, very disappointed!~
+SAY @44
+= @45
 IF ~~ THEN DO ~ReallyForceSpell(Myself,FLASHY_DEATH_YEAH)~ EXIT
 END
 
 IF ~~ togetheragainrom
-SAY ~T-together again? With Jaheira? B-b-but <CHARNAME>, I thought that she... that you...~
-++ ~You see--~ EXTERN JAHEI25J enough
-++ ~I love--~ EXTERN JAHEI25J enough
-++ ~You two--~ EXTERN JAHEI25J enough
+SAY @46
+++ @47 EXTERN JAHEI25J enough
+++ @48 EXTERN JAHEI25J enough
+++ @49 EXTERN JAHEI25J enough
 END
 
 IF ~~ onelastrom
-SAY ~Yes. Y-yes, I most definitely will side with you. I-I made a promise, and if you have earned Jaheira's continued aid, th-then that is more than enough for me.~
+SAY @50
 IF ~~ GOTO leadrom
 END
 
 IF ~~ onelastnon
-SAY ~Yes. Y-yes, I most definitely will side with you. I-I made a promise, and if you have earned Jaheira's continued aid, th-then that is more than enough for me.~
+SAY @50
 IF ~~ GOTO leadnon
 END
 
 IF ~~ leadnon
-SAY ~L-lead on, <CHARNAME>, and then we will... w-well, we will just have to do our best!~
+SAY @51
 IF ~Difficulty(EASIEST)~ THEN DO ~SetGlobal("T#RaiseKhalid","GLOBAL",2)
 ApplySpellRES("d0t#dif1",Myself)
 Ally()~ EXIT
@@ -175,134 +175,134 @@ END
 
 
 CHAIN D0T#KHAL nonstart
-~Wha--who--what am I doing here?!?~
-= ~<CHARNAME>, is that you? M-m-my, it seems like it has been--~
-= ~--J-Jaheira!~
-== JAHEI25J ~Khal... Khalid. Yes, it is us. It... it is good to speak to you once more. To see you.~
-== D0T#KHAL ~Oh, Jaheira love, I c-c-could never have dreamed that such a day would come! B-but how? Where are we? What is t-this place?~
-== JAHEI25J ~You must listen carefully, my Khalid. There is little time to repeat ourselves. So little time...~
-== D0T#KHAL ~<CHARNAME>? What is h-happening here? H-how have you called me?~
+@0
+= @52
+= @53
+== JAHEI25J @54
+== D0T#KHAL @55
+== JAHEI25J @56
+== D0T#KHAL @57
 END
-++ ~Hello again, Khalid. This is the Throne of Bhaal, and I need your help to defeat a vicious, evil foe.~ + defeatnon
-++ ~You are here because I wish you here. You will fight at my side once more against a deadly enemy, because I say so.~ EXTERN JAHEI25J jaheira-meannon
-++ ~I wanted to apologize for not being able to do more to help you. Irenicus killed you to get at Imoen and me. I wish it had not involved you.~ + hadnotbeennon
-++ ~I control much of Bhaal's essence now. It puts us all in danger, but it gives me the power to bring back old friends, even if just for a short while.~ + shortwhilenon
+++ @3 + defeatnon
+++ @4 EXTERN JAHEI25J jaheira-meannon
+++ @5 + hadnotbeennon
+++ @58 + shortwhilenon
 
 CHAIN D0T#KHAL defeatnon
-~Oh n-no! The t-t-terrible circumstance of your birth plagues you still?~
-== JAHEI25J ~It has cost us all dearly, Khalid. We lost you, my love, and have lost other friends and companions as well. There is so much I would say to you... but <CHARNAME>'s circumstances allow us very little time for private thoughts.~
+@59
+== JAHEI25J @60
 END D0T#KHAL main2non
 
 CHAIN JAHEI25J jaheira-meannon
-~<CHARNAME>! You *will* treat Khalid with the respect he has earned!~
-== D0T#KHAL ~I...I do not know th-that I ever hoped to hear you say that, J-Jaheira.~
-== JAHEI25J ~There are many things I should have said, Khalid. But <CHARNAME> is right to be brief, if rather boorish.~
+@61
+== D0T#KHAL @62
+== JAHEI25J @63
 END D0T#KHAL main2non
 
 CHAIN D0T#KHAL hadnotbeennon
-~Y-y-you could not have helped it, <CHARNAME>. There is nothing to be done now. A-and I protected Jaheira so that she might have a chance to live.~
-== JAHEI25J ~You did. You were very brave, Khalid my love. And there is so much I wish to say... but very little time.~
+@64
+== JAHEI25J @65
 END D0T#KHAL main2non
 
 CHAIN D0T#KHAL shortwhilenon
-~W-well, I am flattered that you thought of me, <CHARNAME>. A-and I am very happy to see you both again. Especially y-y-you, Jaheira.~
-==  JAHEI25J ~And I am very relieved to see you, Khalid. I never thought there would be another time. There is so much... but we have so few moments to spare.~
+@66
+==  JAHEI25J @67
 END D0T#KHAL main2non
 
 CHAIN D0T#KHAL main2non
-~Th-then tell me quickly what we must do. I will listen eagerly, and h-h-help in any way I can.~
-== JAHEI25J ~Khalid... your spirit is well? You have not suffered?~
-== D0T#KHAL ~N-no. I do not think so, Jaheira. It... it is not s-s-something I can explain. But I have not suffered.~
-== JAHEI25J ~Good. Good. I only ever wanted you to be at peace. Please know this. When I saw what Irenicus had... had left of you, I...~
-= ~...I could do nothing, Khalid.~
-== D0T#KHAL ~Oh, Jaheira, please don't c-c-cry.~
-= ~Th-there will be plenty of time to discuss th-this later, my love. Right now, <CHARNAME> n-needs our help. Is that not right, <CHARNAME>?~
+@68
+== JAHEI25J @69
+== D0T#KHAL @70
+== JAHEI25J @71
+= @72
+== D0T#KHAL @73
+= @74
 END
-++ ~Yes. I hate to disturb your rest, but without your help Jaheira and I may die. Will you join with me, one last time?~ + onelastnon
-+ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + ~I need you to join the fight against Amelyssan and her minions, but I also wish to reward you with new life, assuming we survive. You and Jaheira can be together again.~ DO ~SetGlobal("T#KhalPromised","GLOBAL",1)~ + togetheragainnon
-++ ~Enough mushy talk. Fiends and traitors await destruction, and I need Khalid's blade once more!~ EXTERN JAHEI25J jah-mushynon
-++ ~This will be a dangerous battle. Are you sure you are up to this?~ + uptothisnon
+++ @75 + onelastnon
++ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + @76 DO ~SetGlobal("T#KhalPromised","GLOBAL",1)~ + togetheragainnon
+++ @77 EXTERN JAHEI25J jah-mushynon
+++ @78 + uptothisnon
 
 CHAIN D0T#KHAL togetheragainnon
-~T-together again? With Jaheira? Th-that is more than I could have ever hoped!~
-= ~B-but, Jaheira... d-do you want this? D-do you still know me as Khalid?~
-== JAHEI25J ~I... I think I do. I have seen many strange things since we were parted. Things which have made me understand Nature's course in a new way.~
-= ~If <CHARNAME> says <PRO_HESHE> can restore you to the man I knew, I will trust <PRO_HIMHER> in this. But this is not a decision I should make for you, Khalid. You must decide.~
-== D0T#KHAL ~I... yes! A th-thousand times yes, Jaheira, <CHARNAME>, y-yes!~
+@79
+= @80
+== JAHEI25J @81
+= @82
+== D0T#KHAL @83
 END D0T#KHAL leadnon
 
 CHAIN JAHEI25J jah-mushynon
-~<CHARNAME>! You would deny us these moments, after so long?~
-== D0T#KHAL ~I-I do believe he is r-r-right, my dear.~
+@84
+== D0T#KHAL @85
 END D0T#KHAL leadnon
 
 CHAIN D0T#KHAL uptothisnon
-~Y-you have never had good reason to believe I g-g-gave you anything less than I possibly c-could in the past, <CHARNAME>. I w-will not fail you now.~
-== JAHEI25J ~My good and dear Khalid. You would never admit when you were overmatched. It was... it is... one of the most endearing things about you.~
-== D0T#KHAL ~C-careful, my love. I d-do not know if I have t-time to blush.~
+@86
+== JAHEI25J @87
+== D0T#KHAL @88
 END D0T#KHAL leadnon
 
 
 CHAIN D0T#KHAL romstart
-~<CHARNAME>, is that you? M-m-my, it seems like it has been--~
-= ~--J-Jaheira!~
-== JAHEI25J ~Khal... Khalid. Yes, it is us. It... it is good to speak to you once more. To see you.~
-== D0T#KHAL ~Oh, Jaheira love, I c-c-could never have dreamed that such a day would come! B-but how? Where are we? What is t-this place?~
-== JAHEI25J ~You must listen carefully, my Khalid. There is little time to repeat ourselves. So little time...~
-== D0T#KHAL ~<CHARNAME>? What is h-happening here? H-how have you called me?~
+@52
+= @53
+== JAHEI25J @54
+== D0T#KHAL @55
+== JAHEI25J @56
+== D0T#KHAL @57
 END
-++ ~Hello again, Khalid. This is the Throne of Bhaal, and I need your help to defeat a vicious, evil foe.~ + defeatrom
-++ ~You are here because I wish you here. You will fight at my side once more against a deadly enemy, because I say so.~ EXTERN JAHEI25J jaheira-mean
-++ ~I wanted to apologize for not being able to do more to help you. Irenicus killed you to get at Imoen and me. I wish it had not involved you.~ + hadnotbeenrom
-++ ~I control much of Bhaal's essence now. It puts us all in danger, but it gives me the power to bring back old friends, even if just for a short while.~ + shortwhile
+++ @3 + defeatrom
+++ @4 EXTERN JAHEI25J jaheira-mean
+++ @5 + hadnotbeenrom
+++ @58 + shortwhile
 
 CHAIN D0T#KHAL shortwhile
-~W-well, I am flattered that you thought of me, <CHARNAME>. A-and I am very happy to see you both again. Especially y-y-you, Jaheira.~
-== JAHEI25J ~And I am very relieved to see you, Khalid, and know that it is you. There is so much... but we have so little time.~
+@66
+== JAHEI25J @89
 END D0T#KHAL main2
 
 CHAIN D0T#KHAL defeatrom
-~Oh n-no! The t-t-terrible circumstance of your birth plagues you still?~
-== JAHEI25J ~It has cost us all dearly, Khalid. We lost you, and have lost other friends and companions as well. There is so much I would say to you... but very little time.~
+@59
+== JAHEI25J @90
 END D0T#KHAL main2
 
 CHAIN JAHEI25J jaheira-mean
-~<CHARNAME>! Treat Khalid with the respect he has earned!~
-== D0T#KHAL ~I...I do not know th-that I ever hoped to hear you say that, J-Jaheira.~
-== JAHEI25J ~There are many things I should have said, Khalid. But <CHARNAME> is right to be brief, if not so to be curt.~
+@91
+== D0T#KHAL @62
+== JAHEI25J @92
 END D0T#KHAL main2
 
 CHAIN D0T#KHAL hadnotbeenrom
-~Y-y-you could not have helped it, <CHARNAME>. There is nothing to be done now. A-and I protected Jaheira so that she might have a chance to live.~
-== JAHEI25J ~You did. You were very brave, Khalid. And there is so much I wish to say... but very little time.~
+@64
+== JAHEI25J @93
 END D0T#KHAL main2
 
 CHAIN D0T#KHAL main2
-~Th-then tell me quickly what we must do. I will listen eagerly, and h-h-help in any way I can.~
-== JAHEI25J ~Khalid, you should know that since you have been gone, <CHARNAME> and I have... become closer. I thought you might know and understand, I... I saw it in a vision.~
-== D0T#KHAL ~I... I... I think so, Jaheira. In s-s-something like a dream, I knew.~
-== JAHEI25J ~Good. Good. I only ever wanted you to be at peace. Please know this.~
-= ~When I saw what Irenicus had... had left of you, I...~
-= ~...I could do nothing, Khalid.~
-== D0T#KHAL ~Oh, Jaheira, please don't c-c-cry.~
-= ~Th-there will be plenty of time to discuss th-this later, my love. Right now, <CHARNAME> n-needs our help. Is that not right, <CHARNAME>?~
+@68
+== JAHEI25J @94
+== D0T#KHAL @95
+== JAHEI25J @96
+= @97
+= @72
+== D0T#KHAL @73
+= @74
 END
-++ ~Yes. I hate to disturb your rest, but without your help Jaheira and I may die. Will you join with me, one last time?~ + onelastrom
-+ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + ~I need you to join the fight against Amelyssan and her minions, but I also wish to reward you with new life, assuming we survive. You and Jaheira can be together again.~ DO ~SetGlobal("T#KhalPromised","GLOBAL",1)~ + togetheragainrom
-+ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + ~Fight with me, help me destroy Amelyssan, and I will bring you back to life. You can do as you wish then.~ DO ~SetGlobal("T#KhalPromised","GLOBAL",1)~ + togetheragainrom
-++ ~Enough mushy talk. Fiends and traitors await destruction, and I need Khalid's blade once more!~ EXTERN JAHEI25J jah-mushyrom
-++ ~This will be a dangerous battle. Are you sure you are up to this?~ + uptothisrom
+++ @75 + onelastrom
++ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + @76 DO ~SetGlobal("T#KhalPromised","GLOBAL",1)~ + togetheragainrom
++ ~!Global("D0T#AnybodyPromised","GLOBAL",1)~ + @98 DO ~SetGlobal("T#KhalPromised","GLOBAL",1)~ + togetheragainrom
+++ @77 EXTERN JAHEI25J jah-mushyrom
+++ @78 + uptothisrom
 
 CHAIN JAHEI25J enough
-~Enough! We do not have time to argue, you both know this.~
-= ~Khalid, I... we will discuss this, but now is not the time. Let us do what we must do first.~
-== D0T#KHAL ~O-of course, my dear. You a-always know best.~
+@99
+= @100
+== D0T#KHAL @101
 END D0T#KHAL leadrom
 
 CHAIN D0T#KHAL leadrom
-~We will... w-well, we will just have to do our best!~
-== JAHEI25J ~And then we will have much to discuss, the... three of us.~
-== D0T#KHAL ~L-lead on, <CHARNAME>!~
+@102
+== JAHEI25J @103
+== D0T#KHAL @104
 END
 IF ~Difficulty(EASIEST)~ THEN DO ~SetGlobal("T#RaiseKhalid","GLOBAL",2)
 ApplySpellRES("d0t#dif1",Myself)
@@ -321,14 +321,14 @@ ApplySpellRES("d0t#dif5",Myself)
 Ally()~ EXIT
 
 CHAIN JAHEI25J jah-mushyrom
-~<CHARNAME>!~
-== D0T#KHAL ~I-I do believe he is r-r-right, my dear.~
+@105
+== D0T#KHAL @85
 END D0T#KHAL leadrom
 
 CHAIN D0T#KHAL uptothisrom
-~Y-you have never had good reason to believe I g-g-gave you anything less than I possibly c-could in the past, <CHARNAME>. I w-will not fail you now.~
-== JAHEI25J ~My good and dear Khalid. You would never admit when you were overmatched. It was... it is... one of the most endearing things about you.~
-== D0T#KHAL ~C-careful, my love. I d-do not know if I have t-time to blush.~
+@86
+== JAHEI25J @87
+== D0T#KHAL @88
 END D0T#KHAL leadrom
 
 

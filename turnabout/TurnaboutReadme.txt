@@ -1,5 +1,5 @@
                     Turnabout: An Ascension Add-On
-		      Original BG2 Version 1.3
+		      Version 1.4
               A Pocket Plane Group Project for Baldur's Gate 2
 	              http://www.pocketplane.net
 
@@ -24,12 +24,11 @@ allies.
 
 INSTALLING TURNABOUT
 
-0. Be sure that you have installed Shadows of Amn, Throne of Bhaal, the latest
-official Bioware patch for TOB, and the latest version of Ascension v2.0 from
-https://forums.beamdog.com/discussion/75640/ascension-v2-0/p1
+0. Be sure that you have installed either Shadows of Amn with Throne of Bhaal and the latest
+official Bioware patch for TOB or BG2EE/EET, and the latest version of Ascension from
+https://github.com/InfinityMods/Ascension/releases
 
-1. Extract the contents of "Version for original BG2, DO NOT USE WITH EE.zip"
-to your install directory.
+1. Extract the contents of this .zip to your install directory. 
 
 2. Click on Setup-Turnabout.exe. Select Yes to install the Turnabout mod.
 
@@ -85,9 +84,9 @@ the game.)
 TECHNICAL/COMPATIBILITY NOTES
 
 Turnabout should be compatible with most mods. However, this version of Turnabout
-is only compatible with the original BG2. Ascension is required and must be
-installed before Turnabout, and you must use v2.0 by DavidW, found here:
-https://forums.beamdog.com/discussion/75640/ascension-v2-0/p1
+is only compatible with BG2 or BG2EE. Ascension is required and must be installed before
+Turnabout, and you must use v2.0 by DavidW, found here:
+https://github.com/InfinityMods/Ascension/releases
 
 
 FAQ
@@ -182,7 +181,8 @@ Five, Irenicus, Bodhi, or the pool guardians in any way.
 
 Q: Is Turnabout compatible with other Ascension add-ons?
 
-A: We have not tested Turnabout with other mods which alter the TOB endgame.
+A: We have not tested Turnabout with other mods which alter the TOB endgame,
+except for Wheels of Prophecy, which is fully compatible.
 
 
 AUTHOR'S NOTE BY ORIGINAL CREATOR, JASON COMPTON
@@ -215,7 +215,12 @@ We hope you enjoy.
 
 Version History:
 
-v1.3: Finally fixed loading issues with the three pools
+v1.4: Unified version for classic BGII and EE, by Austin and jastey:
+	-Moved tp2 into mod folder.
+	-Added turnabout.ini with mod metadata , install order syntax, and globally unique LABELs to support Project Infininty.
+	-Crossmod with Lava's Khalid mod: if Khalid is alive, he can't be summoned via the pools.
+
+v1.3: Finally fixed loading issues with the three pools; separate EE version by Cirosan.
 
 V1.2: Fixed a bug wherein if you promised resurrection to Khalid,
       Dynaheir would erroneously be resurrected instead

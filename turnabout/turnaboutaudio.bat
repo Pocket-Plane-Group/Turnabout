@@ -1,9 +1,0 @@
-@echo off
-cd override
-oggdec t#*.ogg
-oggdec D1*.ogg
-oggdec PG*.ogg
-del t#*.ogg
-del D1*.ogg
-del PG*.ogg
-cd ..

@@ -1,0 +1,388 @@
+BACKUP ~turnabout/backup~
+// AUTHOR ~jcompton@pocketplane.net and simding0@pocketplane.net~ Authors of old versions, use below thread instead
+SUPPORT ~https://forums.pocketplane.net/index.php?board=13.0~
+VERSION v1.4
+
+README ~turnabout/TurnaboutReadme.txt~
+
+ALWAYS
+// convert strings to UTF-8 for BGEE/BG2EE
+	
+ACTION_DEFINE_ARRAY 9xnoconvert BEGIN END
+ACTION_DEFINE_ARRAY 9xreload BEGIN setup END
+
+  LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charsets = 1
+    STR_VAR
+      tra_path = EVAL ~%MOD_FOLDER%/tra~
+      noconvert_array = 9xnoconvert
+      reload_array = 9xreload
+  END 
+END
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+AUTO_TRA ~turnabout/tra/%s~
+
+LANGUAGE ~English~
+         ~English~
+         ~turnabout/tra/English/setup.TRA~
+
+BEGIN @1 /* ~Ascension: Turnabout~ */
+DESIGNATED 0
+LABEL ~Turnabout-main~
+REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @2
+REQUIRE_FILE ~override/bodhind.2da~ @3
+
+// Portraits
+
+ACTION_IF GAME_IS "bg2ee eet" BEGIN
+COPY ~turnabout/portrait/EE~ ~override~
+END
+ELSE BEGIN
+COPY ~turnabout/portrait/Vanilla~ ~override~
+END
+
+// Dialogues
+COMPILE ~turnabout/dialog~
+COMPILE ~turnabout/dialogsep/7.d~
+COMPILE ~turnabout/dialogsep/7b.d~
+COMPILE ~turnabout/dialogsep/6.d~
+COMPILE ~turnabout/dialogsep/1.d~
+COMPILE ~turnabout/dialogsep/2.d~
+COMPILE ~turnabout/dialogsep/3.d~
+COMPILE ~turnabout/dialogsep/4.d~
+COMPILE ~turnabout/dialogsep/5.d~
+
+
+
+// Scripts
+
+COMPILE ~turnabout/baf~
+
+COPY ~turnabout/scripts~ ~override~
+COPY_EXISTING ~FINMEL2.BCS~ ~override~
+DECOMPILE_BCS_TO_BAF
+REPLACE_TEXTUALLY ~ActionOverride("finbodh",Face(8))~ ~ActionOverride("finbodh",Face(8))
+ActionOverride("D0T#DYNA",JumpToPoint([1482.1240]))
+ActionOverride("D0T#TIAX",JumpToPoint([1480.1274]))
+ActionOverride("D0T#XZAR",JumpToPoint([1538.1251]))
+ActionOverride("D0T#KHAL",JumpToPoint([1427.1253]))
+ActionOverride("D0T#YOSH",JumpToPoint([1526.1231]))
+ActionOverride("D0T#GORI",JumpToPoint([1423.1219]))
+ActionOverride("D0T#ALIA",JumpToPoint([1484.1212]))~
+REPLACE_TEXTUALLY ~ActionOverride("balth2",Face(8))~ ~ActionOverride("balth2",Face(8))
+ActionOverride("D0T#DYNA",Face(8))
+ActionOverride("D0T#TIAX",Face(8))
+ActionOverride("D0T#XZAR",Face(8))
+ActionOverride("D0T#KHAL",Face(8))
+ActionOverride("D0T#YOSH",Face(8))
+ActionOverride("D0T#GORI",Face(8))
+ActionOverride("D0T#ALIA",Face(8))~
+COMPILE_BAF_TO_BCS
+
+COPY_EXISTING ~CUT233G.BCS~ ~override~
+              ~CUT233GA.BCS~ ~override~
+              ~CUT233GB.BCS~ ~override~
+DECOMPILE_BCS_TO_BAF
+REPLACE_TEXTUALLY ~ApplySpell(Player6,CLERIC_RESURRECTION)~ ~ApplySpell(Player6,CLERIC_RESURRECTION)
+ApplySpell("D0T#DYNA",CLERIC_RESURRECTION)
+ApplySpell("D0T#TIAX",CLERIC_RESURRECTION)
+ApplySpell("D0T#XZAR",CLERIC_RESURRECTION)
+ApplySpell("D0T#KHAL",CLERIC_RESURRECTION)
+ApplySpell("D0T#YOSH",CLERIC_RESURRECTION)
+ApplySpell("D0T#GORI",CLERIC_RESURRECTION)
+ApplySpell("D0T#ALIA",CLERIC_RESURRECTION)~
+REPLACE_TEXTUALLY ~ActionOverride(Player6,Face(8))~ ~ActionOverride(Player6,Face(8))
+ActionOverride("D0T#DYNA",Face(4))
+ActionOverride("D0T#TIAX",Face(4))
+ActionOverride("D0T#XZAR",Face(4))
+ActionOverride("D0T#KHAL",Face(4))
+ActionOverride("D0T#YOSH",Face(4))
+ActionOverride("D0T#GORI",Face(4))
+ActionOverride("D0T#ALIA",Face(4))~
+REPLACE_TEXTUALLY ~ActionOverride(Player1,ReallyForceSpell(Myself,SLAYER_BACK_TO_HUMAN))~ ~ActionOverride(Player1,ReallyForceSpell(Myself,SLAYER_BACK_TO_HUMAN))
+ActionOverride("D0T#DYNA",JumpToPoint([1523.1080]))
+ActionOverride("D0T#TIAX",JumpToPoint([1494.1135]))
+ActionOverride("D0T#XZAR",JumpToPoint([1483.1160]))
+ActionOverride("D0T#KHAL",JumpToPoint([1542.1202]))
+ActionOverride("D0T#YOSH",JumpToPoint([1566.1136]))
+ActionOverride("D0T#GORI",JumpToPoint([1389.1101]))
+ActionOverride("D0T#ALIA",JumpToPoint([1389.1101]))~
+COMPILE_BAF_TO_BCS
+
+// ITMs
+COPY ~turnabout/copy/d0t#sw11.itm~ ~override~
+SAY NAME2 @4
+COPY ~turnabout/copy/d0t#sw12.itm~ ~override~
+SAY NAME2 @5
+COPY ~turnabout/copy/d0t#hamm.itm~ ~override~
+SAY NAME2 @6
+COPY ~turnabout/copy/d0t#leat.itm~ ~override~
+SAY NAME2 @7
+COPY_EXISTING ~clck15.itm~ ~override/d0t#gori.itm~
+
+// SPLs
+COPY ~turnabout/copy/d0t#dif1.spl~ ~override~
+     ~turnabout/copy/d0t#dif2.spl~ ~override~
+     ~turnabout/copy/d0t#dif3.spl~ ~override~
+     ~turnabout/copy/d0t#dif4.spl~ ~override~
+     ~turnabout/copy/d0t#dif5.spl~ ~override~
+     ~turnabout/copy/d0t#dam1.spl~ ~override~
+     ~turnabout/copy/d0t#dam2.spl~ ~override~
+     ~turnabout/copy/d0t#dam3.spl~ ~override~
+     ~turnabout/copy/d0t#dam4.spl~ ~override~
+     ~turnabout/copy/d0t#dam5.spl~ ~override~
+
+// OGGs
+// COPY ~turnabout/wavs~ ~override~
+//   ~turnabout/oggdec.exe~ ~override~
+	 
+LAF HANDLE_AUDIO STR_VAR audio_path = ~turnabout/wavs~ END
+
+// CREs
+
+// Fix the stupid freaking bird animation problem
+
+COPY_EXISTING ~ppguy02.cre~ ~override/ppguy02.cre~
+WRITE_SHORT 0x28 24851
+
+
+COPY ~turnabout/copy/d0t#xzar.cre~ ~override~
+     ~turnabout/copy/d0t#yosh.cre~ ~override~
+     ~turnabout/copy/ghastsu.cre~ ~override~
+
+COPY ~turnabout/copy/d0t#khal.cre~ ~override~
+SAY SELECT_COMMON3 @8
+SAY BATTLE_CRY1 @9
+SAY DAMAGE ~~ [T#KHAL38]
+SAY DYING ~~ [T#KHAL39]
+SAY SELECT_ACTION1 @12
+SAY SELECT_ACTION2 @13
+SAY SELECT_COMMON1 @14
+SAY SELECT_COMMON2 @15
+SAY INITIAL_MEETING @14
+
+COPY ~turnabout/copy/d0t#tiax.cre~ ~override~
+SAY SELECT_COMMON1 @16
+SAY SELECT_ACTION1 @17
+
+COPY ~turnabout/copy/d0t#dyna.cre~ ~override~
+SAY INITIAL_MEETING @18
+SAY BATTLE_CRY1 @19
+SAY DAMAGE ~~ [T#DYNA38]
+SAY DYING ~~ [T#DYNA39]
+SAY SELECT_COMMON1 @22
+SAY SELECT_ACTION1 @23
+
+COPY ~turnabout/copy/d0t#alia.cre~ ~override~ // Human
+WRITE_ASCII 0x34 ~aliann2s~
+SAY BATTLE_CRY1 @24
+SAY BATTLE_CRY2 @25
+SAY BATTLE_CRY3 @26
+SAY DAMAGE ~~ [PGALIA04]
+SAY DYING @28
+SAY HURT @29
+SAY SELECT_COMMON1 @30
+SAY SELECT_COMMON2 @31
+SAY SELECT_COMMON3 @32
+SAY SELECT_ACTION1 @33
+SAY SELECT_ACTION2 @34
+SAY SELECT_ACTION3 @35
+
+COPY ~turnabout/copy/d0t#alia.cre~ ~override/d0t#ali2.cre~ // Elf
+WRITE_SHORT 0x28 24849
+WRITE_BYTE 0x272 2
+WRITE_ASCII 0x34 ~aliann2s~
+SAY BATTLE_CRY1 @24
+SAY BATTLE_CRY2 @25
+SAY BATTLE_CRY3 @26
+SAY DAMAGE ~~ [PGALIA04]
+SAY DYING @28
+SAY HURT @29
+SAY SELECT_COMMON1 @30
+SAY SELECT_COMMON2 @31
+SAY SELECT_COMMON3 @32
+SAY SELECT_ACTION1 @33
+SAY SELECT_ACTION2 @34
+SAY SELECT_ACTION3 @35
+
+COPY ~turnabout/copy/d0t#alia.cre~ ~override/d0t#ali3.cre~ // Half-elf
+WRITE_SHORT 0x28 24849
+WRITE_BYTE 0x272 3
+WRITE_ASCII 0x34 ~aliann2s~
+SAY BATTLE_CRY1 @24
+SAY BATTLE_CRY2 @25
+SAY BATTLE_CRY3 @26
+SAY DAMAGE ~~ [PGALIA04]
+SAY DYING @28
+SAY HURT @29
+SAY SELECT_COMMON1 @30
+SAY SELECT_COMMON2 @31
+SAY SELECT_COMMON3 @32
+SAY SELECT_ACTION1 @33
+SAY SELECT_ACTION2 @34
+SAY SELECT_ACTION3 @35
+
+COPY ~turnabout/copy/d0t#alia.cre~ ~override/d0t#ali4.cre~ // Dwarf
+WRITE_SHORT 0x28 24850
+WRITE_BYTE 0x272 4
+WRITE_ASCII 0x34 ~aliannas~
+SAY BATTLE_CRY1 @24
+SAY BATTLE_CRY2 @25
+SAY BATTLE_CRY3 @26
+SAY DAMAGE ~~ [PGALIA04]
+SAY DYING @28
+SAY HURT @29
+SAY SELECT_COMMON1 @30
+SAY SELECT_COMMON2 @31
+SAY SELECT_COMMON3 @32
+SAY SELECT_ACTION1 @33
+SAY SELECT_ACTION2 @34
+SAY SELECT_ACTION3 @35
+
+COPY ~turnabout/copy/d0t#alia.cre~ ~override/d0t#ali5.cre~ // Halfling
+WRITE_SHORT 0x28 24851
+WRITE_BYTE 0x272 5
+WRITE_ASCII 0x34 ~aliann2s~
+SAY BATTLE_CRY1 @24
+SAY BATTLE_CRY2 @25
+SAY BATTLE_CRY3 @26
+SAY DAMAGE ~~ [PGALIA04]
+SAY DYING @28
+SAY HURT @29
+SAY SELECT_COMMON1 @30
+SAY SELECT_COMMON2 @31
+SAY SELECT_COMMON3 @32
+SAY SELECT_ACTION1 @33
+SAY SELECT_ACTION2 @34
+SAY SELECT_ACTION3 @35
+
+COPY ~turnabout/copy/d0t#alia.cre~ ~override/d0t#ali6.cre~ // Gnome
+WRITE_SHORT 0x28 24852
+WRITE_BYTE 0x272 6
+WRITE_ASCII 0x34 ~aliannas~
+SAY BATTLE_CRY1 @24
+SAY BATTLE_CRY2 @25
+SAY BATTLE_CRY3 @26
+SAY DAMAGE ~~ [PGALIA04]
+SAY DYING @28
+SAY HURT @29
+SAY SELECT_COMMON1 @30
+SAY SELECT_COMMON2 @31
+SAY SELECT_COMMON3 @32
+SAY SELECT_ACTION1 @33
+SAY SELECT_ACTION2 @34
+SAY SELECT_ACTION3 @35
+
+COPY ~turnabout/copy/d0t#alia.cre~ ~override/d0t#ali7.cre~ // Half-orc
+WRITE_SHORT 0x28 24853
+WRITE_BYTE 0x272 7
+WRITE_ASCII 0x34 ~alihorcs~
+SAY BATTLE_CRY1 @24
+SAY BATTLE_CRY2 @25
+SAY BATTLE_CRY3 @26
+SAY DAMAGE ~~ [PGALIA04]
+SAY DYING @28
+SAY HURT @29
+SAY SELECT_COMMON1 @30
+SAY SELECT_COMMON2 @31
+SAY SELECT_COMMON3 @32
+SAY SELECT_ACTION1 @33
+SAY SELECT_ACTION2 @34
+SAY SELECT_ACTION3 @35
+
+
+COPY ~turnabout/copy/d0t#gori.cre~ ~override~ // Done
+SAY INITIAL_MEETING @36
+SAY DAMAGE ~~ [T#GOR08]
+SAY DYING ~~ [T#GOR09]
+SAY SELECT_COMMON1 @39
+SAY SELECT_ACTION1 @40
+SAY BATTLE_CRY1 @41
+
+
+
+// Epilogues
+
+COPY ~turnabout/2da/D0T#Dyna.2da~ ~override\D0T#Dyna.2da~
+  REPLACE ~99999~ @42
+
+COPY ~turnabout/2da/D0T#Tiax.2da~ ~override\D0T#Tia1.2da~
+  REPLACE ~99999~ @43
+
+COPY ~turnabout/2da/D0T#Tiax.2da~ ~override\D0T#Tia2.2da~
+  REPLACE ~99999~ @44
+
+COPY ~turnabout/2da/D0T#Khal.2da~ ~override\D0T#Kha1.2da~
+  REPLACE ~99999~ @45
+
+COPY ~turnabout/2da/D0T#Khal.2da~ ~override\D0T#Kha2.2da~
+  REPLACE ~99999~ @46
+
+COPY_EXISTING ~jaheind1.2da~ ~override/D0T#jahe.2da~
+  REPLACE ~83350~ @47
+
+COPY ~turnabout/2da/D0T#Xzar.2da~ ~override\D0T#Xzar.2da~
+  REPLACE ~99999~ @48
+
+COPY ~turnabout/2da/D0T#Yosh.2da~ ~override\D0T#Yosh.2da~
+  REPLACE ~99999~ @49
+
+COPY ~turnabout/2da/D0T#AliD.2da~ ~override\D0T#AlD1.2da~
+  REPLACE ~99999~ @50
+
+COPY ~turnabout/2da/D0T#AliH.2da~ ~override\D0T#AlH1.2da~
+  REPLACE ~99999~ @50
+
+COPY ~turnabout/2da/D0T#AliO.2da~ ~override\D0T#AlO1.2da~
+  REPLACE ~99999~ @50
+
+COPY ~turnabout/2da/D0T#AliD.2da~ ~override\D0T#AlD2.2da~
+  REPLACE ~99999~ @51
+
+COPY ~turnabout/2da/D0T#AliH.2da~ ~override\D0T#AlH2.2da~
+  REPLACE ~99999~ @51
+
+COPY ~turnabout/2da/D0T#AliO.2da~ ~override\D0T#AlO2.2da~
+  REPLACE ~99999~ @51
+
+COPY ~turnabout/2da/D0T#AliD.2da~ ~override\D0T#AlD3.2da~
+  REPLACE ~99999~ @52
+
+COPY ~turnabout/2da/D0T#AliH.2da~ ~override\D0T#AlH3.2da~
+  REPLACE ~99999~ @52
+
+COPY ~turnabout/2da/D0T#AliO.2da~ ~override\D0T#AlO3.2da~
+  REPLACE ~99999~ @52
+
+COPY ~turnabout/2da/D0T#AliD.2da~ ~override\D0T#AlD4.2da~
+  REPLACE ~99999~ @53
+
+COPY ~turnabout/2da/D0T#AliH.2da~ ~override\D0T#AlH4.2da~
+  REPLACE ~99999~ @53
+
+COPY ~turnabout/2da/D0T#AliO.2da~ ~override\D0T#AlO4.2da~
+  REPLACE ~99999~ @53
+
+
+
+EXTEND_TOP ~ar6200.bcs~ ~turnabout/baf-extend/ar6200.baf~
+EXTEND_TOP ~yoshimox.bcs~ ~turnabout/baf-extend/yoshimox.baf~
+
+// AT_INTERACTIVE_EXIT ~turnabout/turnaboutaudio.bat~
+// AT_INTERACTIVE_UNINSTALL ~turnabout/turnaboutaudiouninstall.bat~
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+BEGIN @54
+DESIGNATED 1
+LABEL ~Turnabout-BalthazarPortrait~
+
+ACTION_IF GAME_IS "bg2ee eet" BEGIN
+COPY ~turnabout/balthazar/EE~ ~override~
+END
+ELSE BEGIN
+COPY ~turnabout/balthazar/Vanilla~ ~override~
+END
