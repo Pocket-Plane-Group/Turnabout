@@ -1,5 +1,5 @@
                     Turnabout: An Ascension Add-On
-		      Version 1.4
+		      Version 1.5
               A Pocket Plane Group Project for Baldur's Gate 2
 	              http://www.pocketplane.net
 
