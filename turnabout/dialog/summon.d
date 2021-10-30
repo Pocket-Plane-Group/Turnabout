@@ -33,7 +33,7 @@ SAY @10
 IF ~GlobalGT("T#Round","GLOBAL",1) Global("T#RaiseAlianna","GLOBAL",0)~ THEN REPLY @2 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Alianna1
 IF ~Global("T#RaiseDynaheir","GLOBAL",0)~ THEN REPLY @3 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Dynaheir1
 IF ~GlobalGT("T#Round","GLOBAL",1) Global("T#RaiseGorion","GLOBAL",0)~ THEN REPLY @4 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Gorion1
-IF ~Global("T#RaiseKhalid","GLOBAL",0)~ THEN REPLY @5 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Khalid1
+IF ~OR(2) Dead("L#KHALID") Global("L#SPAWNKHALID","GLOBAL",0) Global("T#RaiseKhalid","GLOBAL",0)~ THEN REPLY @5 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Khalid1
 IF ~Global("T#RaiseTiax","GLOBAL",0)~ THEN REPLY @6 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Tiax1
 IF ~Global("T#RaiseXzar","GLOBAL",0) !Global("D0Harpers","GLOBAL",10)~ THEN REPLY @7 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Xzar1
 IF ~Global("T#RaiseYoshimo","GLOBAL",0)~ THEN REPLY @8 DO ~IncrementGlobal("T#Round","GLOBAL",1)~ GOTO Yoshimo1
