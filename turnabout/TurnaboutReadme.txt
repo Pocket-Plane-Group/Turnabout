@@ -214,7 +214,7 @@ We hope you enjoy.
 
 Version History:
 
-v1.7: -French version added, by Shoedead (proofread by JohnBob)
+v1.7: -French version added, by Shodead (proofread by JohnBob)
 
 v1.6: -added "libiconv-1.9.2-1-src.zip" for licence info.
 	-removed remnants descriptions of mod versions only compatible with EE or classic version (mod is unified since v1.5).
