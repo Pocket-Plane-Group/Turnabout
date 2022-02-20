@@ -1,7 +1,7 @@
 BACKUP ~turnabout/backup~
 // AUTHOR ~jcompton@pocketplane.net and simding0@pocketplane.net~ Authors of old versions, use below thread instead
 SUPPORT ~https://forums.pocketplane.net/index.php?board=13.0~
-VERSION v1.6
+VERSION v1.7
 
 README ~turnabout/TurnaboutReadme.txt~
 
@@ -28,6 +28,10 @@ AUTO_TRA ~turnabout/tra/%s~
 LANGUAGE ~English~
          ~English~
          ~turnabout/tra/English/setup.TRA~
+
+LANGUAGE ~French~
+         ~french~
+         ~turnabout/tra/french/setup.TRA~
 
 BEGIN @1 /* ~Ascension: Turnabout~ */
 DESIGNATED 0

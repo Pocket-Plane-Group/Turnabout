@@ -1,5 +1,5 @@
                     Turnabout: An Ascension Add-On
-		      Version 1.6
+		      Version 1.7
               A Pocket Plane Group Project for Baldur's Gate 2
 	              http://www.pocketplane.net
 
@@ -213,6 +213,8 @@ We hope you enjoy.
 
 
 Version History:
+
+v1.7: -French version added, by Shoedead (proofread by JohnBob)
 
 v1.6: -added "libiconv-1.9.2-1-src.zip" for licence info.
 	-removed remnants descriptions of mod versions only compatible with EE or classic version (mod is unified since v1.5).
