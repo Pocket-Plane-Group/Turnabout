@@ -155,7 +155,12 @@ WRITE_SHORT 0x28 24851
 
 COPY ~turnabout/copy/d0t#xzar.cre~ ~override~
      ~turnabout/copy/d0t#yosh.cre~ ~override~
-     ~turnabout/copy/ghastsu.cre~ ~override~
+
+// tiax's summon ghast should summon a ghast
+COPY ~turnabout/copy/ghastsu.cre~ ~override/d0t#ghas.cre~
+COPY_EXISTING ~spin115.spl~ ~override~
+  LPF ALTER_EFFECT STR_VAR match_resource = ghastsu resource = ~d0t#ghas~ END
+  SAY 0x50 @55
 
 COPY ~turnabout/copy/d0t#khal.cre~ ~override~
 SAY SELECT_COMMON3 @8
