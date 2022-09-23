@@ -1,5 +1,5 @@
                     Turnabout: An Ascension Add-On
-		      Version 1.7
+		      Version 1.8
               A Pocket Plane Group Project for Baldur's Gate 2
 	              http://www.pocketplane.net
 
@@ -213,6 +213,10 @@ We hope you enjoy.
 
 
 Version History:
+
+v1.8: -Turnabout adds Tiax's innate Summon Ghast ability, but was doing so in a 
+  way that it messed with the normal Animate Dead spell. Thanks to TotoR for 
+  the bug report!
 
 v1.7: -French version added, by Shodead (proofread by JohnBob)
 
